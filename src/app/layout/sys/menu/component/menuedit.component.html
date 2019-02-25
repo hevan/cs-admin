@@ -1,0 +1,47 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'菜单管理 '" [icon]="'fa-th-list'"></app-page-header>
+    <form (ngSubmit)="onSubmit()" [formGroup]="dataForm">
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="idname">名称</label>
+                <input type="text" class="form-control" formControlName="name" id="idname" placeholder="名称">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="idCode">代码</label>
+                <input type="text" class="form-control" formControlName="code" id="idCode" placeholder="代码">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="idicon">图标</label>
+                <input type="text" class="form-control" formControlName="icon" id="idicon">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="idparentId">上级菜单</label>
+                <select class="form-control" formControlName="parentId" id="idparentId">
+                    <option value="">请选择</option>
+                    <option *ngFor="let item of listMenu" [value]="item.id">{{item.name}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="idhostUrl">路径</label>
+                <input type="text" class="form-control" formControlName="path" id="idhostUrl">
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+            </div>
+            <div class="form-group col-md-6">
+                <button type="submit" [disabled]="submitted" class="btn btn-primary">保存</button>&nbsp;
+                <button type="button" (click)="goBack()" class="btn btn-warning">返回</button>
+            </div>
+
+        </div>
+
+    </form>
+</div>

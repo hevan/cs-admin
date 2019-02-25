@@ -1,0 +1,122 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'查看企业信息'" [icon]="'fa-th-list'"></app-page-header>
+    <div class="row" *ngIf="corpData">
+        <div class="col-xs-6 col-md-6">
+            <div class="row">
+                <div class="col-4">类别:</div>
+                <div class="col-8 font-weight-bold" *ngIf="corpData.corpType">{{corpData.corpType.name}}</div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-6">
+            <div class="row">
+                <div class="col-4">公司名:</div>
+                <div class="col-8 font-weight-bold">{{corpData.name}}</div>
+            </div>
+        </div>
+
+        <div class="col-xs-6 col-md-6">
+            <div class="row">
+                <div class="col-4">城市:</div>
+                <div class="col-8 font-weight-bold">{{corpData.city}}</div>
+            </div>
+        </div>
+
+        <div class="col-xs-6 col-md-6">
+            <div class="row">
+                <div class="col-4">详细地址:</div>
+                <div class="col-8 font-weight-bold">{{corpData.address}}</div>
+            </div>
+        </div>
+
+        <div class="col-xs-6 col-md-6">
+            <div class="row">
+                <div class="col-4">注册日期:</div>
+                <div class="col-8 font-weight-bold">{{corpData.createDate}}</div>
+            </div>
+        </div>
+
+        <div class="col-xs-6 col-md-6">
+            <div class="row">
+                <div class="col-4">appId:</div>
+                <div class="col-8 font-weight-bold">{{corpData.appId}}</div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-12">
+            <div class="row">
+                <div class="col-2">经营范围:</div>
+                <div class="col-10 font-weight-bold">{{corpData.busiScope}}</div>
+            </div>
+        </div>
+
+        <div class="col-xs-6 col-md-6">
+            <div class="row">
+                <div class="col-4">联系人:</div>
+                <div class="col-8 font-weight-bold">{{corpData.linkMan}}</div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-6">
+            <div class="row">
+                <div class="col-4">电话:</div>
+                <div class="col-8 font-weight-bold">{{corpData.linkTel}}</div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-12 justify-content-md-center" *ngIf="corpData.certImageUrl">
+            <img [src]="corpData.certImageUrl" width="400">
+        </div>
+    </div>
+    <div class="row col-12 text-right">
+        <button class="btn btn-primary" (click)="toEdit()">编辑</button>&nbsp;
+        <button class="btn btn-primary" (click)="toCheckCorp('2')">审核通过</button>&nbsp;
+        <button class="btn btn-primary" (click)="toDispatchMenu()">配置功能菜单</button>&nbsp;
+        <button class="btn btn-secondary" (click)="goBack()">返回</button>&nbsp;
+    </div>
+    <div class="col-xl-12 mt-2">
+                <p-table [value]="listCorpMenuItem">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>代码</th>
+                            <th>名称</th>
+                            <th>icon</th>
+                            <th>路径</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-item>
+                        <tr>
+                            <td>
+                                {{item.code}}
+                            </td>
+                            <td>
+                                {{item.name}}
+                            </td>
+                            <td>
+                                <i [className]="'fa' + item.icon"></i>
+                            </td>
+                            <td>
+                                {{item.path}}
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+
+    </div>
+
+    <p-dialog header="分配菜单" [(visible)]="displayEdit" [modal]="true" [responsive]="true" [width]="680" [minWidth]="400" [minY]="200">
+
+        <div class="row">
+            <p-pickList [source]="listMenu" [target]="listSelectMenuItem">
+                <ng-template let-menu pTemplate="item">
+                    <div class="ui-helper-clearfix">
+                        <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{menu.name}}</div>
+                    </div>
+                </ng-template>
+            </p-pickList>
+        </div>
+
+        <div class="row mt-2">
+            <button class="btn btn-primary mr-2" type="button" (click)="saveMenuItem()" >保存</button>
+            <button class="btn btn-secondary" type="button" icon="fa-close" (click)="displayEdit=false">取消</button>
+        </div>
+
+    </p-dialog>
+
+</div>

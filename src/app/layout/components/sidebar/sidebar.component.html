@@ -1,0 +1,85 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+    <div class="list-group">
+        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ '控制台' | translate }}
+        </a>
+
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('merch')">
+                <span><i class="fa fa-globe"></i>&nbsp; {{ '商户管理' | translate }}</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'merch'">
+                <ul class="submenu">
+                    <li>
+                        <a [routerLink]="['/merch/corp/corptype']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-bars"></i>&nbsp;{{ '企业分类' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/merch/corp']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-hand-grab-o"></i>&nbsp;{{ '企业管理' | translate }}
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+        </div>
+
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('sys')">
+                <span><i class="fa fa-cog"></i>&nbsp; {{ '系统管理' | translate }}</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'sys'">
+                <ul class="submenu">
+
+                    <li>
+                        <a [routerLink]="['/sys/third']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-tasks"></i>&nbsp;{{ '第三方接口' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/sys/menu']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-graduation-cap"></i>&nbsp;{{ '菜单管理' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/sys/photos']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                            <i class="fa fa-fw fa-image"></i>&nbsp;{{ '图片管理' | translate }}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
+        <div class="header-fields">
+            <a (click)="rltAndLtr()" class="list-group-item">
+                <span><i class="fa fa-arrows-h"></i>&nbsp; 左/右</span>
+            </a>
+
+            <div class="nested-menu">
+                <a class="list-group-item" (click)="addExpandClass('profile')">
+                    <span><i class="fa fa-user"></i>&nbsp; 个人中心</span>
+                </a>
+                <li class="nested" [class.expand]="showMenu === 'profile'">
+                    <ul class="submenu">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <span><i class="fa fa-fw fa-user"></i> {{ '个人中心' | translate }}</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a [routerLink]="['/login']" (click)="onLoggedout()">
+                                <span><i class="fa fa-fw fa-power-off"></i> {{ '登出' | translate }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+    </div>
+    <div class="toggle-button" [ngClass]="{collapsed: collapsed}" (click)="toggleCollapsed()">
+        <i class="fa fa-fw fa-angle-double-left"></i>&nbsp;
+        <span>点击隐藏</span>
+    </div>
+</nav>

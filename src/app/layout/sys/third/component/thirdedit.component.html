@@ -1,0 +1,87 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'编辑第三方系统'" [icon]="'fa-th-list'"></app-page-header>
+    <form (ngSubmit)="onSubmit()" [formGroup]="dataForm">
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="idname">名称</label>
+                <input type="text" class="form-control" formControlName="name" id="idname" placeholder="名称">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="idCode">代码</label>
+                <input type="text" class="form-control" formControlName="code" id="idCode" placeholder="代码">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <p-fileUpload name="file[]" #fubauto chooseLabel="上传图标" mode="basic" url="http://api.yjf2b.com/auth/v2/open/common/file/upload" accept="image/*" (onUpload)="onBasicUploadAuto($event)" auto="true"></p-fileUpload>
+            </div>
+            <div class="form-group col-md-6">
+                <img *ngIf="imageUrl" [src]="imageUrl" width="100px;">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="idAppId">AppId</label>
+                <input type="text" class="form-control" formControlName="appId" id="idAppId" placeholder="应用Id">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="idSecret">Secret</label>
+                <input type="text" class="form-control" formControlName="secret" id="idSecret" placeholder="secret">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="idpassword">密码</label>
+                <input type="text" class="form-control" formControlName="password" id="idpassword">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="idhostUrl">调用路径</label>
+                <input type="text" class="form-control" formControlName="hostUrl" id="idhostUrl">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="idmerchId">商户merchId</label>
+                <input type="text" class="form-control" formControlName="merchId" id="idmerchId">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="idcallbackUrl">回调地址</label>
+                <input type="text" class="form-control" formControlName="callbackUrl" id="idcallbackUrl">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="idprotocal">协议</label>
+                <input type="text" class="form-control" formControlName="protocal" id="idprotocal">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="idport">端口号</label>
+                <input type="text" class="form-control" formControlName="port" id="idport">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="idsignType">签名算法</label>
+            <input type="text" class="form-control" formControlName="signType" id="idsignType">
+        </div>
+        <div class="form-group">
+            <label for="idpublicKey">公钥</label>
+            <input type="text" class="form-control" formControlName="publicKey" id="idpublicKey">
+        </div>
+        <div class="form-group">
+            <label for="idprivateKey">私钥</label>
+            <input type="text" class="form-control" formControlName="privateKey" id="idprivateKey">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+            </div>
+            <div class="form-group col-md-6">
+                <button type="submit" class="btn btn-primary" [disabled]="submitted">保存</button>&nbsp;
+                <button type="button" (click)="goBack()" class="btn btn-warning">返回</button>
+            </div>
+
+        </div>
+
+    </form>
+</div>

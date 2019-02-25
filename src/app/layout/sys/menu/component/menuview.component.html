@@ -1,0 +1,44 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'查看菜单'" [icon]="'fa-th-list'"></app-page-header>
+    <div class="row" *ngIf="menuData">
+
+        <div class="col-xs-6 col-md-6">
+            <div class="row">
+                <div class="col-4">名称:</div>
+                <div class="col-8 font-weight-bold" >{{menuData.name}}</div>
+            </div>
+        </div>
+
+        <div class="col-xs-6 col-md-6">
+            <div class="row">
+                <div class="col-4">代码:</div>
+                <div class="col-8 font-weight-bold" >{{menuData.code}}</div>
+            </div>
+        </div>
+
+        <div class="col-xs-6 col-md-6">
+            <div class="row">
+                <div class="col-4">图标:</div>
+                <div class="col-8 font-weight-bold" >{{menuData.icon}}</div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-6">
+            <div class="row">
+                <div class="col-4">上级ID:</div>
+                <div class="col-8 font-weight-bold" >{{menuData.parentId}}</div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-4">路径:</div>
+                <div class="col-8 font-weight-bold" >{{menuData.path}}</div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row justify-content-right">
+                <div class="col-6"><button class="btn btn-primary" (click)="toEdit()">编辑</button>&nbsp;<button class="btn btn-secondary" (click)="goBack()">返回</button></div>
+            </div>
+        </div>
+    </div>
+</div>
